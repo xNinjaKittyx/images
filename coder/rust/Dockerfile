@@ -10,6 +10,9 @@ ENV RUSTUP_HOME=/opt/rustup
 ENV CARGO_HOME=/opt/cargo
 ENV PATH=/opt/cargo/bin:$PATH
 
+# Packages needed based on using rust-discord-bot project.
+RUN apt update && apt install pkg-config cmake libssl-dev && rm -rf /var/lib/apt/lists/*
+
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --profile minimal --default-toolchain nightly --default-host x86_64-unknown-linux-gnu && \
     chmod -R a+w ${RUSTUP_HOME} ${CARGO_HOME}
 
