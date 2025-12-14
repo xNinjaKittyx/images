@@ -37,6 +37,8 @@ jobs:
             dockerfile:  coder/rust/Dockerfile
           - image: xNinjaKittyx/inbound-agent
             dockerfile:  jenkins/Dockerfile
+          - image: xNinjaKittyx/rust-chef-sscache
+            dockerfile:  build/Dockerfile.sscache
     permissions:
       contents: read
       packages: write
