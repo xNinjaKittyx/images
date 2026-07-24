@@ -1,4 +1,4 @@
-FROM rust:1.96 AS base
+FROM rust:1.97 AS base
 RUN cargo install cargo-chef sccache --locked
 ENV RUSTC_WRAPPER=sccache SCCACHE_DIR=/sccache  
 RUN apt update && apt upgrade -y && apt install -y curl cmake && apt clean && rm -rf /var/lib/apt/lists/*
