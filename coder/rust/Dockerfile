@@ -30,8 +30,7 @@ RUN sudo add-apt-repository ppa:dotnet/backports && \
 # RUN sudo apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.24.04~noble" && sudo apt-mark hold containerd.io
 ARG DOCKER_VERSION=5:28.5.1-1~ubuntu.24.04~noble
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends --allow-downgrades \
      docker-ce=${DOCKER_VERSION} \
      docker-ce-cli=${DOCKER_VERSION} \
      containerd.io \
