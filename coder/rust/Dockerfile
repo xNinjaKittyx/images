@@ -26,7 +26,7 @@ RUN sudo add-apt-repository ppa:dotnet/backports && \
 
 # TODO: Remove when this issue is fixed: https://github.com/nestybox/sysbox/issues/973 
 # Temporarly fix containerd version 
-RUN sudo apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.24.04~noble" && sudo apt-mark hold containerd.io
+# RUN sudo apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.24.04~noble" && sudo apt-mark hold containerd.io
 
 # Install BunJS
 RUN curl -fsSL https://bun.sh/install | bash
