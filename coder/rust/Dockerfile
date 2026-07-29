@@ -1,3 +1,4 @@
+
 FROM codercom/enterprise-base:ubuntu
 
 # NOTE: This is no longer just rust. It's basically just my dev env at this point. Maybe I'll make smaller builds, but I don't have a need right now.
@@ -27,6 +28,17 @@ RUN sudo add-apt-repository ppa:dotnet/backports && \
 # TODO: Remove when this issue is fixed: https://github.com/nestybox/sysbox/issues/973 
 # Temporarly fix containerd version 
 # RUN sudo apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.24.04~noble" && sudo apt-mark hold containerd.io
+ARG DOCKER_VERSION=5:28.5.1-1~ubuntu.24.04~noble
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+     docker-ce=${DOCKER_VERSION} \
+     docker-ce-cli=${DOCKER_VERSION} \
+     containerd.io \
+     docker-buildx-plugin \
+     docker-compose-plugin \
+  && apt-mark hold docker-ce docker-ce-cli containerd.io \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install BunJS
 RUN curl -fsSL https://bun.sh/install | bash
